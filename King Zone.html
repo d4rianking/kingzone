@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KingStation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+    body {
+      background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      background-color: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: yellow;
+      text-align: center;
+      text-shadow: 2px 2px red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gif-titulo {
+      height: 40px;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: magenta;
+      font-family: 'Creepster', cursive;
+      font-size: 28px;
+      margin-top: -10px;
+    }
+
+    marquee {
+      font-size: 18px;
+      color: magenta;
+      margin: 20px 0;
+    }
+
+    .jogo {
+      border: 3px double red;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #111;
+      max-width: 600px;
+      box-shadow: 0 0 15px red;
+    }
+
+    img.capa {
+      width: 200px;
+      display: block;
+      margin-bottom: 10px;
+      border: 2px solid lime;
+    }
+
+    a {
+      color: cyan;
+      text-decoration: underline;
+    }
+
+    .nota {
+      color: orange;
+    }
+
+    .opiniao {
+      font-style: italic;
+    }
+
+    #contador {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      z-index: 10;
+    }
+
+    #contador img {
+      width: 30px;
+      height: auto;
+    }
+
+    .gif-canto {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .gif-canto img {
+      height: 40px;
+      pointer-events: none;
+    }
+
+    select {
+      background-color: #333;
+      color: lime;
+      border: 2px solid red;
+      padding: 10px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    option {
+      background-color: #111;
+      color: lime;
+    }
+
+    .player-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .gif-assustadora {
+      display: block;
+      margin: 20px auto;
+      width: 300px;
+      height: auto;
+    }
+
+    .jogos-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>
+    <img class="gif-titulo" src="https://www.animatedimages.org/data/media/84/animated-horror-image-0225.gif" alt="gif esquerda">
+    KingStation
+    <img class="gif-titulo" src="https://www.animatedimages.org/data/media/84/animated-horror-image-0225.gif" alt="gif direita">
+  </h1>
+
+  <div class="subtitulo">Revista Online sobre Jogos</div>
+
+  <br>
+  <div style="text-align: center;">
+    <img src="https://www.animatedimages.org/data/media/84/animated-horror-image-0032.gif">
+  </div>
+
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    <img src="https://www.animatedimages.org/data/media/90/animated-fire-image-0009.gif" alt="Chamas" height="30">
+    Bem-vindo ao meu site sobre jogos!
+    <img src="https://www.animatedimages.org/data/media/90/animated-fire-image-0009.gif" alt="Chamas" height="30">
+  </marquee>
+
+  <!-- Plataforma -->
+  <div>
+    <label for="plataforma">Escolha uma Plataforma:</label>
+    <select id="plataforma">
+      <option value="">Selecione a Plataforma</option>
+      <option value="ps1">PS1</option>
+    </select>
+  </div>
+
+  <!-- Jogos -->
+  <!-- PS1 -->
+  <div id="ps1" class="jogos-container">
+    <div class="jogo">
+      <h2><a href="https://castlevania.fandom.com/wiki/Castlevania:_Symphony_of_the_Night">Castlevania: Symphony of the Night (PS1)</a></h2>
+      <img class="capa" src="https://coverproject.sfo2.cdn.digitaloceanspaces.com/playstation_1/ps1_castlevaniasymphonyofthenight_1_thumb.jpg" alt="Capa Castlevania: Symphony of the Night">
+      <p class="nota"><strong>Nota:</strong> 10</p>
+      <p class="opiniao"><strong>Opinião:</strong> Um dos melhores jogos de todos tempos, com uma gameplay gostosa, atmosfera sombria, músicas excelentes.</p>
+    </div>
+  </div>
+
+  <div id="contador">
+    <img src="https://contador-gratis.com/contadores-de-visitas/040525054310149.gif" alt="contador de visitas">
+  </div>
+
+<!-- Player estilo anos 2000 com música do YouTube -->
+<div class="player-container">
+  <iframe width="300" height="60" src="https://www.youtube.com/embed/jFbAARGucTw?autoplay=1&loop=1&playlist=jFbAARGucTw" title="YouTube music player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+  <!-- Espaço para Chat -->
+  <p style="text-align: center; color: gray;">Chat temporariamente indisponível. Para ativar, será necessário hospedar o site em um domínio e registrar o link no Cbox.</p>
+
+  <script>
+    document.getElementById("plataforma").addEventListener("change", function () {
+      const ps1 = document.getElementById("ps1");
+      if (this.value === "ps1") {
+        ps1.style.display = "block";
+      } else {
+        ps1.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
