@@ -74,13 +74,13 @@
     }
 
     #contador {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      text-align: center;
+      text-align: right;
       color: white;
       font-size: 14px;
-      z-index: 10;
+      margin-top: 50px;
+      position: relative;
+      bottom: 0;
+      right: 0;
     }
 
     #contador img {
@@ -130,9 +130,40 @@
     .jogos-container {
       display: none;
     }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      border: 3px solid red;
+      box-shadow: 0 0 20px magenta;
+      color: lime;
+      padding: 20px;
+      z-index: 1000;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      background-color: #222;
+      color: red;
+      border: 2px solid lime;
+      padding: 10px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+    }
   </style>
 </head>
 <body>
+
+  <div class="popup">
+    <h2>Bem-vindo à KingStation!</h2>
+    <p>Olá visitante, eu tenho vários nomes. Não sei por onde você me conhece, mas fique a vontade para conhecer o meu site.</p>
+    <button onclick="document.querySelector('.popup').style.display='none'">Fechar</button>
+  </div>
 
   <h1>
     <img class="gif-titulo" src="https://www.animatedimages.org/data/media/84/animated-horror-image-0225.gif" alt="gif esquerda">
@@ -140,7 +171,7 @@
     <img class="gif-titulo" src="https://www.animatedimages.org/data/media/84/animated-horror-image-0225.gif" alt="gif direita">
   </h1>
 
-  <div class="subtitulo">Revista Online sobre Jogos</div>
+  <div class="subtitulo">Revista Online Estilo Anos 2000</div>
 
   <br>
   <div style="text-align: center;">
@@ -149,22 +180,25 @@
 
   <marquee behavior="scroll" direction="left" scrollamount="5">
     <img src="https://www.animatedimages.org/data/media/90/animated-fire-image-0009.gif" alt="Chamas" height="30">
-    Bem-vindo ao meu site sobre jogos!
+    "Burn to be Burn and Be Reborn"
     <img src="https://www.animatedimages.org/data/media/90/animated-fire-image-0009.gif" alt="Chamas" height="30">
   </marquee>
 
-  <!-- Plataforma -->
+  <!-- Ranking Divertido -->
   <div>
-    <label for="plataforma">Escolha uma Plataforma:</label>
-    <select id="plataforma">
-      <option value="">Selecione a Plataforma</option>
-      <option value="ps1">PS1</option>
+    <label for="ranking">Jogos Eletrônicos Relevantes para mim:</label><br>
+    <select id="ranking">
+      <option value="">Selecione o Ranking</option>
+      <option value="r5">(5) Obra de arte</option>
+      <option value="r4">(4) Brabo demais</option>
+      <option value="r3">(3) Divertidinho</option>
+      <option value="r2">(2) Ruim, mas até vai</option>
+      <option value="r1">(1) Pior do que lavar louça</option>
     </select>
   </div>
 
-  <!-- Jogos -->
-  <!-- PS1 -->
-  <div id="ps1" class="jogos-container">
+  <!-- Jogos por Ranking -->
+  <div id="r5" class="jogos-container">
     <div class="jogo">
       <h2><a href="https://castlevania.fandom.com/wiki/Castlevania:_Symphony_of_the_Night">Castlevania: Symphony of the Night (PS1)</a></h2>
       <img class="capa" src="https://coverproject.sfo2.cdn.digitaloceanspaces.com/playstation_1/ps1_castlevaniasymphonyofthenight_1_thumb.jpg" alt="Capa Castlevania: Symphony of the Night">
@@ -173,28 +207,30 @@
     </div>
   </div>
 
+  <!-- Player estilo anos 2000 com música do YouTube -->
+  <div class="player-container">
+    <iframe width="300" height="60" src="https://www.youtube.com/embed/jFbAARGucTw?autoplay=1&loop=1&playlist=jFbAARGucTw" title="YouTube music player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <!-- Chat -->
+  <iframe src="https://www3.cbox.ws/box/?boxid=3546354&boxtag=QDvcgv" width="100%" height="450" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+
+  <script>
+    document.getElementById("ranking").addEventListener("change", function () {
+      const valores = ["r1", "r2", "r3", "r4", "r5"];
+      valores.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+      });
+      const escolhido = this.value;
+      const escolhidoEl = document.getElementById(escolhido);
+      if (escolhidoEl) escolhidoEl.style.display = "block";
+    });
+  </script>
+
   <div id="contador">
     <img src="https://contador-gratis.com/contadores-de-visitas/040525054310149.gif" alt="contador de visitas">
   </div>
-
-<!-- Player estilo anos 2000 com música do YouTube -->
-<div class="player-container">
-  <iframe width="300" height="60" src="https://www.youtube.com/embed/jFbAARGucTw?autoplay=1&loop=1&playlist=jFbAARGucTw" title="YouTube music player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-
-  <!-- Chat -->
-<iframe src="https://www3.cbox.ws/box/?boxid=3546354&boxtag=QDvcgv" width="100%" height="450" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>	
-  
-  <script>
-    document.getElementById("plataforma").addEventListener("change", function () {
-      const ps1 = document.getElementById("ps1");
-      if (this.value === "ps1") {
-        ps1.style.display = "block";
-      } else {
-        ps1.style.display = "none";
-      }
-    });
-  </script>
 
 </body>
 </html>
